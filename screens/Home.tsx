@@ -22,7 +22,7 @@ const Home = (props: any) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>('');
 
-  const {data, setData, cartValue, cartId, addproduct, isHeartFilled} =
+  const {data, setData, cartValue, cartId, addproduct, isHeartFilled,handlePress,handleHeartPress} =
     useContext<any>(MyContext);
   useEffect(() => {
     axios
@@ -32,6 +32,7 @@ const Home = (props: any) => {
 
   const renderItem1 = ({item}: any) => (
     <View style={styles.productViewList}>
+      <TouchableOpacity onPress={()=>handleHeartPress(item.id)}>
       <Image
         source={
           isHeartFilled[item.id]
@@ -39,7 +40,9 @@ const Home = (props: any) => {
             : require('./assets/heartgrey.png')
         }
         style={{width: 14.55, height: 13.35, margin: 13}}
+        
       />
+      </TouchableOpacity>
       <TouchableOpacity
         style={{position: 'absolute', top: 20, right: 49}}
         onPress={() =>
@@ -77,6 +80,7 @@ const Home = (props: any) => {
             ${item.price}
           </Text>
           <TouchableOpacity
+          onPress={()=>handlePress(item)}
             style={{
               width: 24,
               height: 24,

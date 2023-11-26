@@ -17,6 +17,7 @@ const MovieInfo = (props: any) => {
     addproduct,
     isHeartFilled,
     handleHeartPress,
+    handleBuy
   } = useContext<any>(MyContext);
   const navigation = useNavigation();
 
@@ -114,7 +115,7 @@ const MovieInfo = (props: any) => {
               Add To Cart
             </Button>
             <Button
-              onPress={() => props.navigation.navigate('Billing')}
+              onPress={() => {handleBuy(selecteProdeuct),props.navigation.navigate('Billing')}}
               mode="contained"
               style={styles.byuNowBtn}>
               Buy Now

@@ -73,8 +73,8 @@ const Billing = (props: any) => {
                 style={{width: 30, height: 30, marginLeft: 30, opacity: 0.6}}
               />
               <View>
-                <Text>{item.title}</Text>
-                <Text>${item.price * cartValue[item.id]}</Text>
+                <Text style={styles.itemtitle}>{item.title}</Text>
+                <Text style={styles.itemPrice}>${item.price * cartValue[item.id]}</Text>
               </View>
               <View style={styles.productmanage}>
                 <TouchableOpacity
@@ -220,6 +220,8 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     marginTop: 34,
   },
+  itemtitle:{"color":"#1E222B","fontFamily":"Manrope","fontSize":14,"fontWeight":"500"},
+  itemPrice:{"color":"#1E222B","fontFamily":"Manrope","fontSize":14,"fontStyle":"normal","fontWeight":"400","lineHeight":20}
 });
 
 export default Billing;

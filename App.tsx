@@ -29,6 +29,19 @@ function App() {
     handleAdd(selectedProduct.id);
   };
 
+  const handleBuy = (selectedProduct: any) => {
+    // Check if the selectedProduct is already in the array
+    if (addproduct && !addproduct.includes(selectedProduct)) {
+      // If not, add it to the array
+      setAddproduct((prevProducts: any) => [...prevProducts, selectedProduct]);
+      handleAdd(selectedProduct.id);
+    }
+  
+  };
+
+
+
+
   const handleAdd = (id: any) => {
     // Get the current quantity for the product or default to 0
     const currentQuantity = cartValue[id] || 0;
@@ -42,11 +55,11 @@ function App() {
 
   const handleHeartPress = (id: any) => {
     // Toggle the heart-filled state for the specific product ID
-    const currentQuantity = isHeartFilled[id] || false;
+    const currentProduct = isHeartFilled[id] || false;
 
     setHeartFilled((prevHeartFilled: any) => ({
       ...prevHeartFilled,
-      [id]: !currentQuantity,
+      [id]: !currentProduct,
     }));
   };
 
@@ -90,6 +103,7 @@ function App() {
         handleReduce,
         isHeartFilled,
         handleHeartPress,
+        handleBuy
       }}>
        <NavigationContainer>
         <Stack.Navigator>
